@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:news_app_clean_architecture/featuers/daily_news/domain/entities/article.dart';
-import 'package:news_app_clean_architecture/featuers/daily_news/persentation/bloc/article/remote/remote_article_bloc.dart';
-import 'package:news_app_clean_architecture/featuers/daily_news/persentation/bloc/article/remote/remote_article_state.dart';
-import 'package:news_app_clean_architecture/featuers/daily_news/persentation/widgets/article_tile.dart';
+import '../../domain/entities/article.dart';
+import '../bloc/article/remote/remote_article_bloc.dart';
+import '../bloc/article/remote/remote_article_state.dart';
+import 'article_tile.dart';
 
 class GetArticlesBlocBuilder extends StatelessWidget {
   const GetArticlesBlocBuilder({
@@ -30,8 +30,9 @@ class GetArticlesBlocBuilder extends StatelessWidget {
               return ArticleWidget(
                 article: state.articles![index],
                 isRemovable: true,
-                onArticlePressed: (ArticleEntity articleEntity) {},
-                onRemove: (ArticleEntity articleEntity) {},
+                onArticlePressed: (article) =>
+                    _onArticlePressed(context, article),
+                onRemove: (article) => _onArticlePressed(context, state.articles![index]),
               );
             },
             itemCount: state.articles!.length,
@@ -40,5 +41,9 @@ class GetArticlesBlocBuilder extends StatelessWidget {
         return const SizedBox.shrink();
       },
     );
+  }
+
+  void _onArticlePressed(BuildContext context, ArticleEntity article) {
+    Navigator.pushNamed(context, '/ArticleDetails', arguments: article);
   }
 }

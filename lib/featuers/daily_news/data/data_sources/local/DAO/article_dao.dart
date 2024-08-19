@@ -1,5 +1,4 @@
 import 'package:floor/floor.dart';
-
 import '../../../models/article.dart';
 
 @dao
@@ -10,6 +9,6 @@ abstract class ArticleDao {
   @delete
   Future<void> deleteArticle(ArticleModel article);
 
-  @Query('SELECT * FROM ArticleModel')
+  @Query('SELECT * FROM articles')
   Future<List<ArticleModel>> getArticles();
 }
