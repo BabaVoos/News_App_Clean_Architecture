@@ -1,5 +1,13 @@
 import 'package:equatable/equatable.dart';
 
+class GetArticleResponseEntity extends Equatable {
+  final List<ArticleEntity>? articles;
+  const GetArticleResponseEntity({this.articles});
+
+  @override
+  List<Object?> get props => [articles];
+}
+
 class ArticleEntity extends Equatable {
   final int? id;
   final String? author;
