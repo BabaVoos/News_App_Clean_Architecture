@@ -37,7 +37,6 @@ class GetArticlesBlocBuilder extends StatelessWidget {
             itemCount: state.articles!.length,
           );
         }
-
         return const SizedBox.shrink();
       },
     );
