@@ -7,6 +7,7 @@ import 'featuers/daily_news/persentation/pages/home/daily_news.dart';
 import 'injection_container.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await initializeDependencies();
   runApp(const MyApp());
 }

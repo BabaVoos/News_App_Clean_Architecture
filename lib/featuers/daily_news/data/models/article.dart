@@ -1,3 +1,4 @@
+import 'package:floor/floor.dart';
 import '../../domain/entities/article.dart';
 
 class GetArticleResponse extends GetArticleResponseEntity {
@@ -14,6 +15,7 @@ class GetArticleResponse extends GetArticleResponseEntity {
   }
 }
 
+@Entity(tableName: 'articles', primaryKeys: ['id'])
 class ArticleModel extends ArticleEntity {
   const ArticleModel({
     super.id,
@@ -36,6 +38,19 @@ class ArticleModel extends ArticleEntity {
       urlToImage: json['urlToImage'] as String?,
       publishedAt: json['publishedAt'] as String?,
       content: json['content'] as String?,
+    );
+  }
+
+  factory ArticleModel.fromEntity(ArticleEntity entity) {
+    return ArticleModel(
+      id: entity.id,
+      author: entity.author,
+      title: entity.title,
+      description: entity.description,
+      url: entity.url,
+      urlToImage: entity.urlToImage,
+      publishedAt: entity.publishedAt,
+      content: entity.content,
     );
   }
 }
